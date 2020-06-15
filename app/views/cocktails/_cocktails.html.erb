@@ -1,0 +1,23 @@
+<ul class="list-unstyled">
+  <% cocktails.each do |cocktail| %>
+    <li class="media mb-3">
+      <img class="mr-2 rounded" src="<%= gravatar_url(cocktail.user, { size: 50 }) %>" alt="">
+      <div class="media-body">
+        <div>
+          <%= link_to cocktail.user.name, user_path(cocktail.user) %> <span class="text-muted">posted at <%= cocktail.created_at %></span>
+        </div>
+        <div>
+        	<%= link_to cocktail.name, cocktail_path(cocktail.id) %>
+          <p><%= cocktail.content %></p>
+        </div>
+        <div>
+          <% if current_user == cocktail.user %>
+          	<%= link_to "Edit", edit_cocktail_path(cocktail.id), class: 'btn btn-success btn-sm' %>
+            <%= link_to "Delete", cocktail, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
+          <% end %>
+        </div>
+      </div>
+    </li>
+  <% end %>
+  <%= paginate cocktails %>
+</ul>
