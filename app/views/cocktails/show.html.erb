@@ -11,6 +11,9 @@
 	<h5><%= simple_format(@cocktail.recipe) %></h5>
 </div>
 
-
-<%= link_to "Edit", edit_cocktail_path(@cocktail.id), class: 'btn btn-success btn-sm' %>
-<%= link_to "Delete", @cocktail, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
+<div>
+  <% if current_user == @cocktail.user %>
+  	<%= link_to "Edit", edit_cocktail_path(@cocktail.id), class: 'btn btn-success btn-sm' %>
+    <%= link_to "Delete", @cocktail, method: :delete, data: { confirm: "You sure?" }, class: 'btn btn-danger btn-sm' %>
+  <% end %>
+</div>
