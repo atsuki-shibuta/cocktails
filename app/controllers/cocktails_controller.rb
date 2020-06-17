@@ -16,7 +16,7 @@ class CocktailsController < ApplicationController
     else
       @cocktails = current_user.cocktails.order(id: :desc).page(params[:page])
       flash.now[:danger] = 'cocktailの投稿に失敗しました。'
-      render 'toppages/index'
+      render :new
     end
   end
   
@@ -42,6 +42,8 @@ class CocktailsController < ApplicationController
     flash[:success] = 'cocktailを削除しました。'
     redirect_back(fallback_location: root_path)
   end
+  
+  private
   
   def cocktail_params
     params.require(:cocktail).permit(:name, :content, :ingredient, :recipe)
