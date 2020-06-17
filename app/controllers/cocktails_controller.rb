@@ -40,7 +40,7 @@ class CocktailsController < ApplicationController
     @cocktail = Cocktail.find(params[:id])
     @cocktail.destroy
     flash[:success] = 'cocktailを削除しました。'
-    redirect_back(fallback_location: root_path)
+    redirect_to root_path
   end
   
   private
