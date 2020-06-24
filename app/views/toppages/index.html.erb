@@ -1,6 +1,7 @@
 <% if logged_in? %>
+	<h1>5 Cocktails</h1>
   <div class="row">
-    <%= render 'cocktails/cocktails', cocktails: @cocktails %>
+    <%= render 'random_cocktails', cocktails: @cocktails %>
   </div>
 <% else %>
 	<div class="center jumbotron">
